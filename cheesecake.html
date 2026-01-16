@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookZen</title>
+  <link rel="icon" type="image/x-icon" href="./CookZen.png">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f8f8f8;
+    }
+
+    body.red .footer { background-color: #db3131; }
+    body.orange .footer { background-color: #ffb74d; }
+    body.blue .footer { background-color: #64b5f6; }
+    body.purple .footer { background-color: #ba68c8; }
+
+    body.red .progress-bar { background-color: #db3131; }
+    body.orange .progress-bar { background-color: #ffb74d; }
+    body.blue .progress-bar { background-color: #64b5f6; }
+    body.purple .progress-bar { background-color: #ba68c8; }
+
+    .footer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: #db3131;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      z-index: 10;
+    }
+
+    .barre {
+      position: fixed;
+      top: 120px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: black;
+      z-index: 9;
+    }
+
+    .navigation {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+      align-items: center;
+      gap: 15px;
+      padding: 0 15px;
+      z-index: 20;
+      box-sizing: border-box;
+    }
+
+    .arrow {
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+    }
+
+    .progress-container {
+      flex: 1;
+      height: 10px;
+      background: #ddd;
+      margin: 0 10px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #db3131;
+      border-radius: 6px;
+      transition: width 0.3s ease;
+    }
+
+    .contenu {
+      margin-top: 140px;
+      margin-bottom: 60px;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .cookzen-title {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="footer">
+    <div class="cookzen-title">CookZen</div>
+  </div>
+
+  <div class="barre"></div>
+
+  <div class="navigation">
+    <div class="arrow" id="prev">&lt;</div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="arrow" id="next">&gt;</div>
+  </div>
+
+<div class="contenu">
+  <div class="step active">
+    <p><strong>Préparer la base</strong></p>
+    <p>
+      Mixez les biscuits sans gluten.<br>
+      Ajoutez le beurre fondu et tassez au fond du moule.
+    </p>
+  </div>
+
+  <div class="step">
+    <p><strong>Préparer l’appareil</strong></p>
+    <p>
+      Mélangez le fromage frais et le sucre.<br>
+      Incorporez les œufs, la vanille, la crème et la fécule.
+    </p>
+  </div>
+
+  <div class="step">
+    <p><strong>Cuisson et repos</strong></p>
+    <p>
+      Versez sur la base et enfournez à 160°C pendant 45 min.<br>
+      Laissez refroidir puis réfrigérez 4 h.
+    </p>
+  </div>
+</div>
+
+  <script>
+    const savedTheme = localStorage.getItem('cookzenTheme');
+    if (savedTheme) {
+      document.body.className = savedTheme;
+    }
+
+    const steps = document.querySelectorAll('.step');
+    const progressBar = document.getElementById('progressBar');
+    let currentStep = 0;
+
+    function updateStep() {
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index === currentStep);
+      });
+
+      const progress = ((currentStep + 1) / steps.length) * 100;
+      progressBar.style.width = progress + '%';
+    }
+
+    document.getElementById('next').onclick = () => {
+      if (currentStep === steps.length - 1) {
+        window.location.href = 'index.html';
+      } else {
+        currentStep++;
+        updateStep();
+      }
+    };
+
+    document.getElementById('prev').onclick = () => {
+      if (currentStep === 0) {
+        window.location.href = 'index.html';
+      } else {
+        currentStep--;
+        updateStep();
+      }
+    };
+
+    updateStep();
+  </script>
+
+</body>
+</html>

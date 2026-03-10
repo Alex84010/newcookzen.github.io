@@ -1,4 +1,4 @@
-baggels :
+bagels:
  500 grammes de farine sans gluten
  10 grammes de levure sèche active
  25 grammes de sucre
@@ -7,3 +7,12 @@ baggels :
  300 millilitres de eau tiède
  30 millilitres de huile d’olive
  50 grammes de graines de sésame
+
+baguette:
+ 250 grammes de farine de riz
+ 50 grammes de fécule de maïs
+ 1 cuillère à café de gomme xanthane
+ 10 grammes de levure sèche
+ 300 millilitres de eau tiède
+ 2 cuillères à soupe de huile d’olive
+ 1 cuillère à café de sel

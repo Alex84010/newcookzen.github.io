@@ -16,3 +16,13 @@ baguette:
  300 millilitres de eau tiède
  2 cuillères à soupe de huile d’olive
  1 cuillère à café de sel
+
+blinis:
+ 150 grammes de farine de sarrasin
+ 50 grammes de farine de riz
+ 1 sachet de levure chimique sans gluten
+ 2 oeufs
+ 250 ml de lait d’amande
+ 2 cuillères à soupe de huile d’olive
+ 1 pincée de sel
+ 1 cuillère à café de sucre
